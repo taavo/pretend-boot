@@ -2,18 +2,18 @@ package com.taavo;
 
 class Response {
     private final int status;
-    private final String content;
+    private final String responseText;
 
-    public Response(int status, String content) {
+    public Response(int status, String responseText) {
         this.status = status;
-        this.content = content;
+        this.responseText = responseText;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public String getContent() {
-        return content;
+    public String getResponseText() {
+        return responseText;
     }
 }

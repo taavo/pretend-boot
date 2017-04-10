@@ -2,18 +2,18 @@ package com.taavo;
 
 class Request {
     private String method;
-    private String uri;
+    private String url;
 
-    public Request(String method, String uri) {
+    public Request(String method, String url) {
         this.method = method;
-        this.uri = uri;
+        this.url = url;
     }
 
     public String getMethod() {
         return method;
     }
 
-    public String getUri() {
-        return uri;
+    public String getUrl() {
+        return url;
     }
 }

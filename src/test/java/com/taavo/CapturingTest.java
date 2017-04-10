@@ -36,10 +36,10 @@ public class CapturingTest {
 
         Request requestBehavior = apiBehavior.getRequest();
         assertThat(requestBehavior.getMethod()).isEqualTo("GET");
-        assertThat(requestBehavior.getUri()).isEqualTo("/");
+        assertThat(requestBehavior.getUrl()).isEqualTo("/");
 
         Response responseBehavior = apiBehavior.getResponse();
         assertThat(responseBehavior.getStatus()).isEqualTo(200);
-        assertThat(responseBehavior.getContent()).isEqualTo("Hello World");
+        assertThat(responseBehavior.getResponseText()).isEqualTo("Hello World");
     }
 }
