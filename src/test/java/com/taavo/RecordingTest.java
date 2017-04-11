@@ -1,6 +1,7 @@
 package com.taavo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,21 +25,31 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CapturingTest {
+public class RecordingTest {
+    public static final String DESTINATION_PATH = "js/spec/behavior/captured/simple.json";
+
     @Autowired
     private MockMvc mockMvc;
 
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    @Before
+    public void deletePreviousRecording() throws IOException {
+        Files.deleteIfExists(Paths.get(DESTINATION_PATH));
+    }
+
     @Test
-    public void capturesMethodAndUri() throws Exception {
-        BehaviorCapturingResultHandler behaviorCapturingResultHandler = new BehaviorCapturingResultHandler();
+    public void recordsMethodAndUri() throws Exception {
+        BehaviorRecordingResultHandler behaviorRecordingResultHandler = new BehaviorRecordingResultHandler(DESTINATION_PATH);
 
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/"))
-                    .andDo(behaviorCapturingResultHandler)
+                    .andDo(behaviorRecordingResultHandler)
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(containsString("Hello World")));
 
-        ApiBehavior apiBehavior = behaviorCapturingResultHandler.getApiBehavior();
+        String output = new String(Files.readAllBytes(Paths.get("js/spec/behavior/captured/simple.json")));
+        ApiBehavior apiBehavior = objectMapper.readValue(output, ApiBehavior.class);
 
         Request requestBehavior = apiBehavior.getRequest();
         assertThat(requestBehavior.getMethod()).isEqualTo("GET");
