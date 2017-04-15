@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class RecordingTest {
-    public static final String DESTINATION_PATH = "js/spec/behavior/captured/simple.json";
+    public static final String DESTINATION_PATH = "js/spec/behavior/simple.json";
 
     @Autowired
     private MockMvc mockMvc;
@@ -48,7 +48,7 @@ public class RecordingTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(containsString("Hello World")));
 
-        String output = new String(Files.readAllBytes(Paths.get("js/spec/behavior/captured/simple.json")));
+        String output = new String(Files.readAllBytes(Paths.get(DESTINATION_PATH)));
         ApiBehavior apiBehavior = objectMapper.readValue(output, ApiBehavior.class);
 
         Request requestBehavior = apiBehavior.getRequest();

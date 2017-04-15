@@ -1,10 +1,10 @@
 import 'jasmine-ajax';
 
 export class FakeServer {
-    start() {
+    start(apiBehavior) {
         jasmine.Ajax.install();
 
-        API_BEHAVIOR.forEach((apiBehavior) => {
+        apiBehavior.forEach((apiBehavior) => {
             const request = apiBehavior.request;
             const response = apiBehavior.response;
 

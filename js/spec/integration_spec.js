@@ -4,7 +4,7 @@ describe("FakeServer", () => {
     let fakeServer = new FakeServer();
 
     beforeEach(() => {
-        fakeServer.start();
+        fakeServer.start(API_BEHAVIOR);
     });
 
     afterEach(() => {

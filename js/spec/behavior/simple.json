@@ -1,1 +1,1 @@
-{"request":{"method":"GET","url":"/aSpecifiedPath"},"response":{"status":200,"responseText":"The Response You Were Expecting"}}
+{"request":{"method":"GET","url":"/"},"response":{"status":200,"responseText":"Hello World"}}
