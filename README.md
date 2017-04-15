@@ -80,3 +80,12 @@ While the fake server is activated your JS tests can pretend your
 real server is running, without many of the costs associated with
 feature tests!
 
+
+## TODO
+
+- Rename library from FakeServer to Pretend because that's cuter
+- Run js tests from command line
+- One-button tests for both js & java
+- Publish to npm
+- Publish to maven
+- Probably other stuff too
