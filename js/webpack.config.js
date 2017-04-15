@@ -1,14 +1,7 @@
 const webpack = require('webpack');
 
-const fs = require('fs');
+const loadApiBehavior = require('./loadApiBehavior');
 
-const capturedBehaviorPath = "./spec/behavior/captured";
-const apiBehaviorFiles = fs.readdirSync(capturedBehaviorPath);
-const apiBehavior = apiBehaviorFiles.map((fileName) => {
-    return JSON.parse(fs.readFileSync(capturedBehaviorPath + "/" + fileName, "utf8"))
-});
-
-apiBehavior.push(JSON.parse(fs.readFileSync('./spec/behavior/simple.json', "utf8")));
 
 module.exports = {
     entry: './index.js',
@@ -28,6 +21,6 @@ module.exports = {
         ]
     },
     plugins: [new webpack.DefinePlugin({
-        API_BEHAVIOR: JSON.stringify(apiBehavior)
+        API_BEHAVIOR: JSON.stringify(loadApiBehavior("./spec/behavior"))
     })]
 };
