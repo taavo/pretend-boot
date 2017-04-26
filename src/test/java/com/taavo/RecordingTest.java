@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultHandler;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static com.taavo.BehaviorRecordingResultHandler.saveFixture;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,11 +42,9 @@ public class RecordingTest {
 
     @Test
     public void recordsMethodAndUri() throws Exception {
-        BehaviorRecordingResultHandler behaviorRecordingResultHandler = new BehaviorRecordingResultHandler(DESTINATION_PATH);
-
         this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/"))
-                    .andDo(behaviorRecordingResultHandler)
+                    .andDo(saveFixture(DESTINATION_PATH))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(containsString("Hello World")));
 

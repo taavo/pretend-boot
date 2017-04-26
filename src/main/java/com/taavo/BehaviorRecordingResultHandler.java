@@ -2,6 +2,7 @@ package com.taavo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultHandler;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,4 +27,9 @@ public class BehaviorRecordingResultHandler extends BehaviorCapturingResultHandl
                 )
         );
     }
+
+    public static ResultHandler saveFixture(String destinationPath) {
+        return new BehaviorRecordingResultHandler(destinationPath);
+    }
+
 }

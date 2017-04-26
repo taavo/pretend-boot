@@ -25,11 +25,9 @@ you'd like to treat as a fixture on the javascript side.
 ```
 @Test
 public void someExistingApiTestIWantToExposeToJavascript() {
-    BehaviorRecordingResultHandler behaviorRecordingResultHandler = new BehaviorRecordingResultHandler('js/spec/behavior');
-
     this.mockMvc.perform(
                 MockMvcRequestBuilders.get("/something"))
-                    .andDo(behaviorRecordingResultHandler)
+                    .andDo(saveFixture("js/spec/behavior"))
                 .andExpect(...);
 }
 ```
