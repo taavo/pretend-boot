@@ -82,8 +82,6 @@ feature tests!
 ## TODO
 
 - Rename library from FakeServer to PretendBoot because that's cuter
-- Run js tests from command line
-- One-button tests for both js & java
 - Publish to npm
 - Publish to maven
 - Probably other stuff too
