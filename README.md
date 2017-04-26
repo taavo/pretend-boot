@@ -1,4 +1,4 @@
-# Pretend
+# Pretend-Boot
 
 Typically I write tests to make sure my API is sane, and I write tests
 to make sure my JS behaves appropriately given the API is sane. But I
@@ -13,7 +13,7 @@ know whether or not I've broken an assumption my JS code makes, and
 vise versa.
 
 (Right now the library is falled FakeServer but I want to rename it
-to Pretend, because that's cuter and I'm still a rubyist at heart)
+to PretendBoot, because that's cuter and I'm still a rubyist at heart)
 
 ## Usage
 
@@ -83,7 +83,7 @@ feature tests!
 
 ## TODO
 
-- Rename library from FakeServer to Pretend because that's cuter
+- Rename library from FakeServer to PretendBoot because that's cuter
 - Run js tests from command line
 - One-button tests for both js & java
 - Publish to npm
