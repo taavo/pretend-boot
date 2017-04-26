@@ -1,14 +1,14 @@
-import { FakeServer } from '../index'
+import { PretendBoot } from '../index'
 
-describe("FakeServer", () => {
-    let fakeServer = new FakeServer();
+describe("PretendBoot", () => {
+    let pretendBoot = new PretendBoot();
 
     beforeEach(() => {
-        fakeServer.start(API_BEHAVIOR);
+        pretendBoot.start(API_BEHAVIOR);
     });
 
     afterEach(() => {
-        fakeServer.stop();
+        pretendBoot.stop();
     });
 
     it("responds to requests recorded by our API", (done) => {

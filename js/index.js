@@ -1,6 +1,6 @@
 import 'jasmine-ajax';
 
-export class FakeServer {
+export class PretendBoot {
     start(apiBehavior) {
         jasmine.Ajax.install();
 

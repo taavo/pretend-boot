@@ -1,14 +1,14 @@
-import { FakeServer } from '../index'
+import { PretendBoot } from '../index'
 
-describe("FakeServer", () => {
-    let fakeServer = new FakeServer();
+describe("PretendBoot", () => {
+    let pretendBoot = new PretendBoot();
 
     beforeEach(() => {
-        fakeServer.start([{"request":{"method":"GET","url":"/aSpecifiedPath"},"response":{"status":200,"responseText":"The Response You Were Expecting"}}]);
+        pretendBoot.start([{"request":{"method":"GET","url":"/aSpecifiedPath"},"response":{"status":200,"responseText":"The Response You Were Expecting"}}]);
     });
 
     afterEach(() => {
-        fakeServer.stop();
+        pretendBoot.stop();
     });
 
     it("responds according to specified requests", (done) => {

@@ -1,7 +1,7 @@
 {
-  "name": "java-javascript-integration",
+  "name": "pretend-boot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Stub out HTTP with fixtures so you can pretend another applications is running",
   "main": "index.js",
   "scripts": {
     "test": "gulp test",

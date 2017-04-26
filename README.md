@@ -12,9 +12,6 @@ to spin up an entire server. Every time I change my java code I can
 know whether or not I've broken an assumption my JS code makes, and
 vise versa.
 
-(Right now the library is falled FakeServer but I want to rename it
-to PretendBoot, because that's cuter and I'm still a rubyist at heart)
-
 ## Usage
 
 1. Capture some requests
@@ -54,14 +51,14 @@ module.exports = {
 3. Activate your fixtures in your integration tests
 
 ```
-    let fakeServer = new FakeServer();
+    let pretendBoot = new PretendBoot();
 
     beforeEach(() => {
-        fakeServer.start(API_BEHAVIOR);
+        pretendBoot.start(API_BEHAVIOR);
     });
 
     afterEach(() => {
-        fakeServer.stop();
+        pretendBoot.stop();
     });
     
     it("can now act as though our API is running!", () => {
@@ -74,14 +71,13 @@ module.exports = {
 
 4. Write fewer feature tests!
 
-While the fake server is activated your JS tests can pretend your
+While pretend-boot is activated your JS tests can pretend your
 real server is running, without many of the costs associated with
 feature tests!
 
 
 ## TODO
 
-- Rename library from FakeServer to PretendBoot because that's cuter
 - Publish to npm
 - Publish to maven
 - Probably other stuff too
