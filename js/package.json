@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "test:server": "gulp test:server"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "gulp-jasmine-browser": "^1.7.1",
     "gulp-util": "^3.0.8",
     "lodash": "^4.17.4",
+    "phantomjs-prebuilt": "^2.1.14",
     "webpack": "^2.3.3",
     "webpack-stream": "^3.2.0"
   },
