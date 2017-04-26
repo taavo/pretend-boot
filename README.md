@@ -78,6 +78,7 @@ feature tests!
 
 ## TODO
 
+- try it from an application
 - Publish to npm
 - Publish to maven
 - Probably other stuff too
